@@ -13,7 +13,7 @@ public class UserDTO {
     private  String email;
 
     private  String password;
-    
+
     private UserRole userRole;
 
 
@@ -30,6 +30,5 @@ public class UserDTO {
     }
 
     public void setUserRole(UserRole userRole) {
-
     }
 }
