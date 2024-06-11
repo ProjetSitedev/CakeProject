@@ -18,7 +18,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> getAllCategories() {
+    public List<Category> getAllCategory() {
         return categoryRepository.findAll();
     }
 
@@ -50,5 +50,14 @@ public class CategoryServiceImpl implements CategoryService {
         }
         return false;
     }
-}
 
+    @Override
+    public Category findCategoryByName(String categoryName) {
+        return categoryRepository.findByName(categoryName);
+    }
+
+    @Override
+    public List<Category> searchCategory(String keyword) {
+        return List.of();
+    }
+}

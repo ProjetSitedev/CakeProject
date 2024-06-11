@@ -1,25 +1,64 @@
 package com.example.site_vitrine.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+import com.example.site_vitrine.entities.StaticPage;
+import com.example.site_vitrine.service.StaticService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@CrossOrigin(origins = "http://localhost:4200")
+@RequestMapping("staticPage")
 public class StaticController {
 
-    @GetMapping("/")
-    public String home() {
-        return "index"; // Renvoie le nom de la vue associée à la page d'accueil (index.html, index.jsp, etc.)
+    private final StaticService staticService;
+
+    public StaticController(StaticService staticService) {
+        this.staticService = staticService;
     }
 
-    @GetMapping("/about")
-    public String about() {
-        return "about"; // Renvoie le nom de la vue associée à la page À propos (about.html, about.jsp, etc.)
+    @GetMapping
+    public ResponseEntity<List<StaticPage>> getAllStaticPages() {
+        List<StaticPage> staticPages = staticService.getAllStaticPage();
+        return ResponseEntity.ok(staticPages);
     }
 
-    @GetMapping("/contact")
-    public String contact() {
-        return "contact"; // Renvoie le nom de la vue associée à la page de contact (contact.html, contact.jsp, etc.)
+    @GetMapping("/{id}")
+    public ResponseEntity<StaticPage> getStaticPageById(@PathVariable UUID id) {
+        return ResponseEntity.ok(staticService.getStaticById(id));
     }
 
-    // Ajoutez d'autres méthodes pour gérer d'autres pages statiques si nécessaire
+    @PostMapping
+    public ResponseEntity<StaticPage> createStaticPage(@RequestBody StaticPage staticPage) {
+        StaticPage createdStaticPage = staticService.createStaticPage(staticPage);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdStaticPage);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<StaticPage> updateStaticPage(@PathVariable UUID id, @RequestBody StaticPage updatedStaticPage) {
+        StaticPage staticPage = staticService.updateStatic(id, updatedStaticPage);
+        if (staticPage != null) {
+            return ResponseEntity.ok(staticPage);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteStaticPage(@PathVariable UUID id) {
+        boolean deleted = staticService.deleteStatic(id);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<StaticPage>> searchStaticPage(@RequestParam("keyword") String keyword) {
+        List<StaticPage> staticPages = staticService.searchSatics(keyword);
+        return ResponseEntity.ok(staticPages);
+    }
 }
