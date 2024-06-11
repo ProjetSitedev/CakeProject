@@ -56,4 +56,9 @@ public class StaticServiceImpl implements StaticService {
     public StaticPage findStaticByTitle(String title){
         return staticRepository.findByTitle(title);
     }
+
+    @Override
+    public StaticPage createStaticPage(StaticPage staticPage) {
+        return  staticRepository.save(staticPage);
+    }
 }
