@@ -5,13 +5,15 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-<<<<<<< HEAD
-public interface TestimonialRepository extends JpaRepository<Testimonial, UUID>;
-{
-    Testimonial findByAuteur(String author);
-}
-=======
 public interface TestimonialRepository extends JpaRepository<Testimonial, UUID> {
+
+    /** 
+     * TODO: Mettre à jour en optionel et mettre à jour le service
+     * 
+     * Tojours retourner des Optional dans le cas où le retour est unique. 
+     * Dans le cas où la valeur donnée ne correspond à aucune entrée, l'optional empty permettra d'anticiper d'éventuels NullPointerException.
+     * 
+     * Optional<T> findByXYZ(String xyz);
+     * */
     Testimonial findByAuthor(String author);
 }
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6

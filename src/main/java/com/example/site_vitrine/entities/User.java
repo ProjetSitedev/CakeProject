@@ -12,8 +12,9 @@ import java.util.UUID;
 @Entity
 @Data
 @Getter @Setter
-@Table(name = "users")
+@Table(name = "_user")
 public class User {
+
     @Id @GeneratedValue
     private UUID id;
 
@@ -32,8 +33,5 @@ public class User {
     private UserRole userRole;
 
     private byte[] img;
-
-
-
 
 }

@@ -9,6 +9,14 @@ import java.util.UUID;
 
 public class NewsServiceImpl implements NewsService {
 
+     /** 
+     * TODO: 
+     * 
+     *  1- Mettre à jour en fonction des changements sur les entités et les repositories
+     *  2- Modifier les retours et les paramètres vers des DTO. Tenez à manipuler le moins possible les entités. 
+     * 
+     * */
+
     private final NewsOrPromotionRepository newsOrpromotionRepository;
 
     public NewsServiceImpl(NewsOrPromotionRepository newsOrPromotionRepository) {

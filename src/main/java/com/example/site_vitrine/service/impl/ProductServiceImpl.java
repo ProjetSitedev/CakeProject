@@ -9,6 +9,14 @@ import java.util.UUID;
 
 public class ProductServiceImpl implements ProductService {
 
+     /** 
+     * TODO: 
+     * 
+     *  1- Mettre à jour en fonction des changements sur les entités et les repositories
+     *  2- Modifier les retours et les paramètres vers des DTO. Tenez à manipuler le moins possible les entités. 
+     * 
+     * */
+
     private final ProductRepository productRepository;
 
     public ProductServiceImpl(ProductRepository productRepository) {this.productRepository = productRepository;}
@@ -53,6 +61,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> searchProducts(String keyword){
+        // TODO: Marquer les actions à faire ultérieurement en TODO
         return List.of();
     }
 

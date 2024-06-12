@@ -3,18 +3,22 @@ package com.example.site_vitrine.service;
 import com.example.site_vitrine.entities.Testimonial;
 import com.example.site_vitrine.repository.TestimonialRepository;
 import jakarta.persistence.EntityNotFoundException;
-<<<<<<< HEAD
-=======
-
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
 import java.util.List;
 import java.util.UUID;
 
-public class TestimonialServiceImpl implements TestimonialService {
-<<<<<<< HEAD
-=======
 
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
+@Service
+public class TestimonialServiceImpl implements TestimonialService {
+
+
+    /** 
+     * TODO: 
+     * 
+     *  1- Mettre à jour en fonction des changements sur les entités et les repositories
+     *  2- Modifier les retours et les paramètres vers des DTO. Tenez à manipuler le moins possible les entités. 
+     * 
+     * */
+
     private final TestimonialRepository testimonialRepository;
 
     public TestimonialServiceImpl(TestimonialRepository testimonialRepository) {
@@ -27,52 +31,34 @@ public class TestimonialServiceImpl implements TestimonialService {
     }
 
     @Override
-<<<<<<< HEAD
-    public Testimonial getTestimonialById(UUID id) {
-=======
     public Testimonial getTestimonialById(UUID id){
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
         return testimonialRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Testimony not found"));
     }
 
     @Override
-<<<<<<< HEAD
-    public Testimonial createTestimonial(Testimonial testimonial) {
-=======
     public Testimonial createTestimonial(Testimonial testimonial){
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
         return testimonialRepository.save(testimonial);
     }
 
     @Override
-<<<<<<< HEAD
-    public Testimonial updateTestimonial(UUID id, Testimonial updatedTestimonial) {
-        Testimonial existingTestimonial = getTestimonialById(id);
-        if (existingTestimonial != null) {
-=======
     public Testimonial updateTestimonial(UUID id, Testimonial updatedTestimonial){
         Testimonial existingTestimonial = getTestimonialById(id);
         if(existingTestimonial != null){
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
             existingTestimonial.setAuthor(updatedTestimonial.getAuthor());
             existingTestimonial.setContent(updatedTestimonial.getContent());
             existingTestimonial.setCreatedAt(updatedTestimonial.getCreatedAt());
             return testimonialRepository.save(existingTestimonial);
         }
+        // Jamais retourner null. Tojours lever une exception lorsque le schéma normal ne s'est pas déroulé.
         return null;
     }
 
     @Override
-<<<<<<< HEAD
-    public boolean deleteTestimonial(UUID id) {
-        Testimonial existingTestimonial = getTestimonialById(id);
-        if (existingTestimonial != null) {
-=======
     public boolean deleteTestimonial(UUID id){
+        // Pas mal comme solution mais on peut faire plus simple. A revoir
         Testimonial existingTestimonial = getTestimonialById(id);
         if(existingTestimonial != null){
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
             testimonialRepository.delete(existingTestimonial);
             return true;
         }
@@ -80,11 +66,7 @@ public class TestimonialServiceImpl implements TestimonialService {
     }
 
     @Override
-<<<<<<< HEAD
-    public Testimonial findTestimonialByAuthor(String testimonialAuthor) {
-=======
     public Testimonial findTestimonialByAuthor(String testimonialAuthor){
->>>>>>> 50c0807b0abca31f2f667bd676bfd4e9e882bde6
         return testimonialRepository.findByAuthor(testimonialAuthor);
     }
 

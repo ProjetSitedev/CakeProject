@@ -11,6 +11,14 @@ import java.util.UUID;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
+     /** 
+     * TODO: 
+     * 
+     *  1- Mettre à jour en fonction des changements sur les entités et les repositories
+     *  2- Modifier les retours et les paramètres vers des DTO. Tenez à manipuler le moins possible les entités. 
+     * 
+     * */
+
     private final CategoryRepository categoryRepository;
 
     public CategoryServiceImpl(CategoryRepository categoryRepository) {

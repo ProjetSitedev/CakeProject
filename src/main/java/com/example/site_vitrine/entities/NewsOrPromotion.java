@@ -15,7 +15,6 @@ import java.util.UUID;
 public class NewsOrPromotion {
 
     @Id @GeneratedValue
-
     private UUID id;
 
     private String title;

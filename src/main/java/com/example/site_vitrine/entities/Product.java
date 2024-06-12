@@ -12,7 +12,6 @@ import java.util.UUID;
 public class Product {
 
     @Id @GeneratedValue
-
     private UUID id;
 
     private String name;
@@ -22,7 +21,6 @@ public class Product {
     private String imageURL;
     private String description;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(optional = false) 
     private Category category;
 }

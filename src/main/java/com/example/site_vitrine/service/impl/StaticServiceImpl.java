@@ -7,7 +7,16 @@ import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class StaticServiceImpl implements StaticService {
+
+     /** 
+     * TODO: 
+     * 
+     *  1- Mettre à jour en fonction des changements sur les entités et les repositories
+     *  2- Modifier les retours et les paramètres vers des DTO. Tenez à manipuler le moins possible les entités. 
+     * 
+     * */
 
     private final StaticRepository staticRepository;
 
