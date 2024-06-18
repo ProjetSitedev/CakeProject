@@ -1,22 +1,24 @@
 package com.example.site_vitrine.service;
 
-import com.example.site_vitrine.entities.Testimonial;
-
+import com.example.site_vitrine.dto.TestimonialDTO;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface TestimonialService {
-    List<Testimonial> getAllTestimonial();
+    List<TestimonialDTO> getAllTestimonials();
 
-    Testimonial getTestimonialById(UUID id);
+    Optional<TestimonialDTO> getTestimonialById(UUID id);
 
-    Testimonial createTestimonial(Testimonial testimonial);
+    TestimonialDTO createTestimonial(TestimonialDTO testimonialDTO);
 
-    Testimonial updateTestimonial(UUID id, Testimonial updatedTestimonial);
+    TestimonialDTO updateTestimonial(UUID id, TestimonialDTO updatedTestimonialDTO);
 
     boolean deleteTestimonial(UUID id);
 
-    Testimonial findTestimonialByAuthor(String testimonialAuthor);
+    Optional<TestimonialDTO> findTestimonialByAuthor(String testimonialAuthor);
 
-    List<Testimonial> searchTestimonial(String keyword);
+    List<TestimonialDTO> searchTestimonials(String keyword);
+
+    List<TestimonialDTO> searchTestimonial(String keyword);
 }

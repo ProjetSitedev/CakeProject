@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity (name = "_product")
@@ -12,7 +13,6 @@ import java.util.UUID;
 public class Product {
 
     @Id @GeneratedValue
-
     private UUID id;
 
     private String name;
@@ -21,7 +21,13 @@ public class Product {
 
     private String imageURL;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne(optional = false) 
     private Category category;
+
+    public void setPrice(BigDecimal price) {
+    }
+
+    public void setPrice(double price) {
+
+    }
 }

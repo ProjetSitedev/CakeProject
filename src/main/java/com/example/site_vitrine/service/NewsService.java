@@ -1,22 +1,22 @@
 package com.example.site_vitrine.service;
 
-import com.example.site_vitrine.entities.NewsOrPromotion;
-
+import com.example.site_vitrine.dto.NewsOrPromotionDTO;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface NewsService {
-    List<NewsOrPromotion> getAllNewsOrPromotion();
+    List<NewsOrPromotionDTO> getAllNewsOrPromotion();
 
-    NewsOrPromotion getNewsOrPromotionById(UUID id);
+    Optional<NewsOrPromotionDTO> getNewsOrPromotionById(UUID id);
 
-    NewsOrPromotion updateNewsOrPromotion(UUID id, NewsOrPromotion updatedNewsOrPromotion);
+    NewsOrPromotionDTO createNewsOrPromotion(NewsOrPromotionDTO newsOrPromotionDTO);
+
+    NewsOrPromotionDTO updateNewsOrPromotion(UUID id, NewsOrPromotionDTO updatedNewsOrPromotionDTO);
 
     boolean deleteNewsOrPromotion(UUID id);
 
-    NewsOrPromotion findNewsOrPromotionByTitle(String title);
+    Optional<NewsOrPromotionDTO> findNewsOrPromotionByTitle(String title);
 
-    List<NewsOrPromotion> searchNewsOrPromotion(String keyword);
-
-    NewsOrPromotion createNewsOrPromotion(NewsOrPromotion newsOrPromotion);
+    List<NewsOrPromotionDTO> searchNewsOrPromotion(String keyword);
 }

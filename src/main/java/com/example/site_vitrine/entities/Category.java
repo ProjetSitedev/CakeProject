@@ -13,15 +13,11 @@ import java.util.UUID;
 public class Category {
 
     @Id @GeneratedValue
-
     private UUID id;
 
     private String name;
 
     private String description;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-    private List<Product> products;
-
-
 }
+

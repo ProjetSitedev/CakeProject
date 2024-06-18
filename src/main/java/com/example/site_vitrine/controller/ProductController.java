@@ -1,6 +1,7 @@
 package com.example.site_vitrine.controller;
 
-
+import com.example.site_vitrine.dto.ProductDTO;
+import com.example.site_vitrine.dto.UpdateProductDTO;
 import com.example.site_vitrine.entities.Product;
 import com.example.site_vitrine.service.ProductService;
 import org.springframework.http.HttpStatus;
@@ -22,29 +23,35 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
+    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+        List<ProductDTO> products = productService.getAllProducts();
         return ResponseEntity.ok(products);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable UUID id) {
-        return ResponseEntity.ok(productService.getProductById(id));
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable UUID id) {
+        ProductDTO product = productService.getProductById(id);
+        if (product != null) {
+            return ResponseEntity.ok(product);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        Product createdProduct = productService.createProduct(product);
+    public ResponseEntity<ProductDTO> createProduct(@RequestBody Product product) {
+        ProductDTO createdProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable UUID id, @RequestBody Product updateProduct) {
-        Product product = productService.updateProduct(id, updateProduct);
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable UUID id, @RequestBody UpdateProductDTO updateProductDTO) {
+        ProductDTO product = productService.updateProduct(id, updateProductDTO);
         if (product != null) {
             return ResponseEntity.ok(product);
+        } else {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
@@ -52,16 +59,14 @@ public class ProductController {
         boolean deleted = productService.deleteProduct(id);
         if (deleted) {
             return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.notFound().build();
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<Product>> searchProduct(@RequestParam("keyword") String keyword) {
-        List<Product> product = productService.searchProducts(keyword);
-        return ResponseEntity.ok(product);
+    public ResponseEntity<List<ProductDTO>> searchProduct(@RequestParam("keyword") String keyword) {
+        List<ProductDTO> products = productService.searchProducts(keyword);
+        return ResponseEntity.ok(products);
     }
-
-
-
 }

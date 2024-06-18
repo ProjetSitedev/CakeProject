@@ -1,24 +1,24 @@
 package com.example.site_vitrine.service;
 
+import com.example.site_vitrine.dto.ProductDTO;
+import com.example.site_vitrine.dto.UpdateProductDTO;
 import com.example.site_vitrine.entities.Product;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface ProductService {
-    List<Product> getAllProducts();
+    List<ProductDTO> getAllProducts();
 
-    Product getProductById(UUID id);
+    ProductDTO getProductById(UUID id);
 
-    Product createProduct(Product product);
+    ProductDTO createProduct(Product createProductDTO);
 
-    Product updateProduct(UUID id, Product updatedProduct);
+    ProductDTO updateProduct(UUID id, UpdateProductDTO updateProductDTO);
 
     boolean deleteProduct(UUID id);
 
-    List<Product> searchProducts(String keyword);
+    List<ProductDTO> searchProducts(String keyword);
 
-    Product findProductByName(String productName);
-
-
+    ProductDTO findProductByName(String productName);
 }

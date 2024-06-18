@@ -1,6 +1,7 @@
 package com.example.site_vitrine.controller;
 
 
+import com.example.site_vitrine.dto.StaticPageDTO;
 import com.example.site_vitrine.entities.StaticPage;
 import com.example.site_vitrine.service.StaticService;
 import org.springframework.http.HttpStatus;
@@ -22,13 +23,13 @@ public class StaticController {
     }
 
     @GetMapping
-    public ResponseEntity<List<StaticPage>> getAllStaticPages() {
-        List<StaticPage> staticPages = staticService.getAllStaticPage();
+    public ResponseEntity<List<StaticPageDTO>> getAllStaticPages() {
+        List<StaticPageDTO> staticPages = staticService.getAllStaticPage();
         return ResponseEntity.ok(staticPages);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StaticPage> getStaticPageById(@PathVariable UUID id) {
+    public ResponseEntity<StaticPageDTO> getStaticPageById(@PathVariable UUID id) {
         return ResponseEntity.ok(staticService.getStaticById(id));
     }
 
@@ -57,8 +58,8 @@ public class StaticController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<StaticPage>> searchStaticPage(@RequestParam("keyword") String keyword) {
-        List<StaticPage> staticPages = staticService.searchSatics(keyword);
+    public ResponseEntity<List<StaticPageDTO>> searchStaticPage(@RequestParam("keyword") String keyword) {
+        List<StaticPageDTO> staticPages = staticService.searchSatics(keyword);
         return ResponseEntity.ok(staticPages);
     }
 }

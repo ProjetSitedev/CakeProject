@@ -14,7 +14,6 @@ import java.util.UUID;
 public class StaticPage {
 
     @Id @GeneratedValue
-
     private UUID id;
 
     private String title;

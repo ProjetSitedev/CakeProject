@@ -1,22 +1,25 @@
 package com.example.site_vitrine.service;
 
-import com.example.site_vitrine.entities.Category;
+import com.example.site_vitrine.dto.CategoryDTO;
+import com.example.site_vitrine.dto.CreateCategoryDTO;
+import com.example.site_vitrine.dto.UpdateCategoryDTO;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface CategoryService {
-    List<Category> getAllCategory();
 
-    Category getCategoryById(UUID id);
+    List<CategoryDTO> getAllCategory();
 
-    Category createCategory(Category category);
+    CategoryDTO getCategoryById(UUID id);
 
-    Category updateCategory(UUID id, Category updatedCategory);
+    CategoryDTO createCategory(CreateCategoryDTO createCategoryDTO);
+
+    CategoryDTO updateCategory(UUID id, UpdateCategoryDTO updateCategoryDTO);
 
     boolean deleteCategory(UUID id);
 
-    Category findCategoryByName(String categoryName);
+    CategoryDTO findCategoryByName(String categoryName);
 
-    List<Category> searchCategory(String keyword);
+    List<CategoryDTO> searchCategory(String keyword);
 }

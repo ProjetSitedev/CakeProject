@@ -1,4 +1,4 @@
-package com.example.site_vitrine.service.user;
+package com.example.site_vitrine.service.impl;
 
 
 import com.example.site_vitrine.dto.SignupDTO;
@@ -11,7 +11,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements com.example.site_vitrine.service.user.UserService {
+
+    // TODO: A ne pas oublier
 
     @Autowired
     private UserRepository userRepository;
@@ -20,7 +22,7 @@ public class UserServiceImpl implements UserService{
     public UserDTO createUser(SignupDTO signupDTO) {
         User user = new User();
         user.setEmail(signupDTO.getEmail());
-        user.setPassword(new BCryptPasswordEncoder().encode(signupDTO.getPassword()));
+        user.setPassword(new BCryptPasswordEncoder().encode(signupDTO.getPassword())); // Ceci ne devrait pas marcher sans Spring Security
         user.setName(signupDTO.getName());
         user.setUserRole(UserRole.USER);
         User createdUser = userRepository.save(user);
