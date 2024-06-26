@@ -61,4 +61,5 @@ public class NewsController {
         List<NewsOrPromotionDTO> newsOrPromotions = newsService.searchNewsOrPromotion(keyword);
         return ResponseEntity.ok(newsOrPromotions);
     }
+    
 }

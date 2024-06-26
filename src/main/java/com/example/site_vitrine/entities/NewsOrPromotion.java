@@ -10,18 +10,38 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.UUID;
 
-@Entity(name = "_news")
-@Getter @Setter
+@Entity
 public class NewsOrPromotion {
 
-    @Id @GeneratedValue
-    private UUID id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    private String title;
+    private String titre;
 
-    private String content;
+    private String contenu;
 
-    private LocalDate startDate;
+    private Date datePublication;
 
-    private LocalDate endDate;
+    // Getters et setters
+}
+
+@Entity
+public class newsOrPromotionPromotion {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String titre;
+
+    private String description;
+
+    private double prixReductiion;
+
+    private Date dateDebut;
+
+    private Date dateFin;
+
+    // Getters et setters
 }
